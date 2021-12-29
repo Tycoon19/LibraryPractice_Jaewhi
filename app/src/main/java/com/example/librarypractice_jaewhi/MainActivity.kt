@@ -1,5 +1,6 @@
 package com.example.librarypractice_jaewhi
 
+import android.Manifest
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -56,6 +57,12 @@ class MainActivity : AppCompatActivity() {
 
 
             }
+
+            TedPermission.create()
+                .setPermissionListener(permissionListener)
+                .setDeniedMessage("전화 연결 권한이 필요합니다. [설정]에서 진행해주세요.")
+                .setPermissions(Manifest.permission.CALL_PHONE)
+                .check()
 
         }
 
